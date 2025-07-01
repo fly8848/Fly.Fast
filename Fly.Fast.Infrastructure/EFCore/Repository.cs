@@ -2,7 +2,7 @@ using Fly.Fast.Application.EFCore;
 using Fly.Fast.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Fly.Fast.Infrastructure.Contracts.EFCore;
+namespace Fly.Fast.Infrastructure.EFCore;
 
 public abstract class Repository<T> : IRepository<T> where T : class, IEntity
 {

@@ -1,7 +1,7 @@
 using Fly.Fast.Domain;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Fly.Fast.Infrastructure.Contracts.EFCore;
+namespace Fly.Fast.Infrastructure.EFCore;
 
 public static class EntityTypeBuilderExtensions
 {
