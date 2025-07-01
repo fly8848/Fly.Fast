@@ -8,9 +8,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.UnitOfWork.Contrac
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Architecture", "Architecture", "{B79B5013-DA3F-4AC6-9FD1-249297FEAB1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.Domain.Contracts", "Fly.Fast.Domain.Contracts\Fly.Fast.Domain.Contracts.csproj", "{3AE85FF0-4933-4210-AF4F-76CF866C93FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.Domain", "Fly.Fast.Domain\Fly.Fast.Domain.csproj", "{3AE85FF0-4933-4210-AF4F-76CF866C93FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.Infrastructure.Contracts", "Fly.Fast.Infrastructure.Contracts\Fly.Fast.Infrastructure.Contracts.csproj", "{91479475-124C-44D1-952A-E0BC4D202698}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.Infrastructure", "Fly.Fast.Infrastructure\Fly.Fast.Infrastructure.csproj", "{91479475-124C-44D1-952A-E0BC4D202698}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.Application", "Fly.Fast.Application\Fly.Fast.Application.csproj", "{8239701A-ECD4-4BC1-94DC-192EA6C651CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,11 +36,16 @@ Global
 		{91479475-124C-44D1-952A-E0BC4D202698}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91479475-124C-44D1-952A-E0BC4D202698}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91479475-124C-44D1-952A-E0BC4D202698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8239701A-ECD4-4BC1-94DC-192EA6C651CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8239701A-ECD4-4BC1-94DC-192EA6C651CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8239701A-ECD4-4BC1-94DC-192EA6C651CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8239701A-ECD4-4BC1-94DC-192EA6C651CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33923679-1EDC-465B-8652-43367B6688B2} = {93873A04-BCD7-46D0-BE0C-CFDD5A6209CD}
 		{6AABFACF-DF15-4718-BA22-754599B8034A} = {93873A04-BCD7-46D0-BE0C-CFDD5A6209CD}
 		{3AE85FF0-4933-4210-AF4F-76CF866C93FF} = {B79B5013-DA3F-4AC6-9FD1-249297FEAB1E}
 		{91479475-124C-44D1-952A-E0BC4D202698} = {B79B5013-DA3F-4AC6-9FD1-249297FEAB1E}
+		{8239701A-ECD4-4BC1-94DC-192EA6C651CE} = {B79B5013-DA3F-4AC6-9FD1-249297FEAB1E}
 	EndGlobalSection
 EndGlobal

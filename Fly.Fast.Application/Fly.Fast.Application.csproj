@@ -4,7 +4,10 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Fly.Fast.Domain</RootNamespace>
     </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Fly.Fast.Domain\Fly.Fast.Domain.csproj"/>
+    </ItemGroup>
 
 </Project>
