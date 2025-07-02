@@ -7,9 +7,5 @@ public interface IEntity<T> : IEntity
 
 public interface IEntity
 {
-    IReadOnlyList<DomainEvent> DomainEvents { get; }
-
-    void AddDomainEvent(DomainEvent domainEvent);
-
-    void ClearDomainEvents();
+    
 }

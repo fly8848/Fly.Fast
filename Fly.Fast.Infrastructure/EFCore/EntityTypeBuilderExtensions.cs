@@ -9,7 +9,7 @@ public static class EntityTypeBuilderExtensions
     {
         var entityType = typeof(T);
 
-        if (entityType.IsAssignableTo(typeof(IEntity))) builder.Ignore(e => ((IEntity)e).DomainEvents);
+        if (entityType.IsAssignableTo(typeof(IHasDomainEvent))) builder.Ignore(e => ((IHasDomainEvent)e).DomainEvents);
 
         if (entityType.IsAssignableTo(typeof(IHasCreated)))
         {

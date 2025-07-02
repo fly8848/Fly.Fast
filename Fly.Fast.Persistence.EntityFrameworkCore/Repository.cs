@@ -1,10 +1,10 @@
-using Fly.Fast.Application.EFCore;
-using Fly.Fast.Domain;
+using System.Linq.Expressions;
+using Fly.Fast.Persistence.Contracts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Fly.Fast.Infrastructure.EFCore;
+namespace Fly.Fast.Persistence.EntityFrameworkCore;
 
-public abstract class Repository<T> : IRepository<T> where T : class, IEntity
+public abstract class Repository<T> : IRepository<T> where T : class
 {
     private readonly DbContext _dbContext;
 
@@ -54,33 +54,33 @@ public abstract class Repository<T> : IRepository<T> where T : class, IEntity
         return await _dbContext.Set<T>().FindAsync([id], cancellationToken);
     }
 
-    public async Task<T?> FirstOrDefaultAsync(IQueryable<T> queryable, CancellationToken cancellationToken = default)
+    public async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> expression,
+        CancellationToken cancellationToken = default)
     {
-        return await queryable.FirstOrDefaultAsync(cancellationToken);
+        return await _dbContext.Set<T>().FirstOrDefaultAsync(expression, cancellationToken);
     }
 
-    public async Task<T?> SingleOrDefaultAsync(IQueryable<T> queryable, CancellationToken cancellationToken = default)
+    public async Task<T?> SingleOrDefaultAsync(Expression<Func<T, bool>> expression,
+        CancellationToken cancellationToken = default)
     {
-        return await queryable.SingleOrDefaultAsync(cancellationToken);
+        return await _dbContext.Set<T>().SingleOrDefaultAsync(expression, cancellationToken);
     }
 
-    public async Task<List<T>> ListAsync(IQueryable<T> queryable, CancellationToken cancellationToken = default)
+    public async Task<List<T>> ListAsync(Expression<Func<T, bool>> expression,
+        CancellationToken cancellationToken = default)
     {
-        return await queryable.ToListAsync(cancellationToken);
+        return await _dbContext.Set<T>().Where(expression).ToListAsync(cancellationToken);
     }
 
-    public async Task<int> CountAsync(IQueryable<T> queryable, CancellationToken cancellationToken = default)
+    public async Task<int> CountAsync(Expression<Func<T, bool>> expression,
+        CancellationToken cancellationToken = default)
     {
-        return await queryable.CountAsync(cancellationToken);
+        return await _dbContext.Set<T>().CountAsync(expression, cancellationToken);
     }
 
-    public async Task<bool> AnyAsync(IQueryable<T> queryable, CancellationToken cancellationToken = default)
+    public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression,
+        CancellationToken cancellationToken = default)
     {
-        return await queryable.AnyAsync(cancellationToken);
-    }
-
-    public Task<IQueryable<T>> AsQueryableAsync()
-    {
-        return Task.FromResult(_dbContext.Set<T>().AsQueryable());
+        return await _dbContext.Set<T>().AnyAsync(expression, cancellationToken);
     }
 }

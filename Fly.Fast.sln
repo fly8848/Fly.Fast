@@ -1,11 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.UnitOfWork", "Fly.Fast.UnitOfWork\Fly.Fast.UnitOfWork.csproj", "{33923679-1EDC-465B-8652-43367B6688B2}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitOfWork", "UnitOfWork", "{93873A04-BCD7-46D0-BE0C-CFDD5A6209CD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.UnitOfWork.Contracts", "Fly.Fast.UnitOfWork.Contracts\Fly.Fast.UnitOfWork.Contracts.csproj", "{6AABFACF-DF15-4718-BA22-754599B8034A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Architecture", "Architecture", "{B79B5013-DA3F-4AC6-9FD1-249297FEAB1E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.Domain", "Fly.Fast.Domain\Fly.Fast.Domain.csproj", "{3AE85FF0-4933-4210-AF4F-76CF866C93FF}"
@@ -14,20 +8,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.Application", "Fly.Fast.Application\Fly.Fast.Application.csproj", "{8239701A-ECD4-4BC1-94DC-192EA6C651CE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{3030988C-074E-4D6F-8816-A60FBB2A8992}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.Persistence.Contracts", "Fly.Fast.Persistence.Contracts\Fly.Fast.Persistence.Contracts.csproj", "{7ECB19BA-735F-4C1C-8AF7-6E391CF2D29B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fly.Fast.Persistence.EntityFrameworkCore", "Fly.Fast.Persistence.EntityFrameworkCore\Fly.Fast.Persistence.EntityFrameworkCore.csproj", "{CE7CD49D-9A59-4902-AEBF-7E2A2670696C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{33923679-1EDC-465B-8652-43367B6688B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33923679-1EDC-465B-8652-43367B6688B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33923679-1EDC-465B-8652-43367B6688B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33923679-1EDC-465B-8652-43367B6688B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6AABFACF-DF15-4718-BA22-754599B8034A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AABFACF-DF15-4718-BA22-754599B8034A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6AABFACF-DF15-4718-BA22-754599B8034A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6AABFACF-DF15-4718-BA22-754599B8034A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3AE85FF0-4933-4210-AF4F-76CF866C93FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AE85FF0-4933-4210-AF4F-76CF866C93FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AE85FF0-4933-4210-AF4F-76CF866C93FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -40,12 +32,20 @@ Global
 		{8239701A-ECD4-4BC1-94DC-192EA6C651CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8239701A-ECD4-4BC1-94DC-192EA6C651CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8239701A-ECD4-4BC1-94DC-192EA6C651CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ECB19BA-735F-4C1C-8AF7-6E391CF2D29B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ECB19BA-735F-4C1C-8AF7-6E391CF2D29B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ECB19BA-735F-4C1C-8AF7-6E391CF2D29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ECB19BA-735F-4C1C-8AF7-6E391CF2D29B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE7CD49D-9A59-4902-AEBF-7E2A2670696C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE7CD49D-9A59-4902-AEBF-7E2A2670696C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE7CD49D-9A59-4902-AEBF-7E2A2670696C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE7CD49D-9A59-4902-AEBF-7E2A2670696C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{33923679-1EDC-465B-8652-43367B6688B2} = {93873A04-BCD7-46D0-BE0C-CFDD5A6209CD}
-		{6AABFACF-DF15-4718-BA22-754599B8034A} = {93873A04-BCD7-46D0-BE0C-CFDD5A6209CD}
 		{3AE85FF0-4933-4210-AF4F-76CF866C93FF} = {B79B5013-DA3F-4AC6-9FD1-249297FEAB1E}
 		{91479475-124C-44D1-952A-E0BC4D202698} = {B79B5013-DA3F-4AC6-9FD1-249297FEAB1E}
 		{8239701A-ECD4-4BC1-94DC-192EA6C651CE} = {B79B5013-DA3F-4AC6-9FD1-249297FEAB1E}
+		{7ECB19BA-735F-4C1C-8AF7-6E391CF2D29B} = {3030988C-074E-4D6F-8816-A60FBB2A8992}
+		{CE7CD49D-9A59-4902-AEBF-7E2A2670696C} = {3030988C-074E-4D6F-8816-A60FBB2A8992}
 	EndGlobalSection
 EndGlobal
