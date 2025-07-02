@@ -1,6 +1,6 @@
 namespace Fly.Fast.Domain;
 
-public abstract class Entity<T> : IEntity<T>
+public abstract class Entity<T> : IEntity<T>, IHasDomainEvent
 {
     private readonly List<DomainEvent> _domainEvents = new();
 

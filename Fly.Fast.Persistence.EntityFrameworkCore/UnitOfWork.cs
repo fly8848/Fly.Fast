@@ -27,35 +27,37 @@ public class UnitOfWork<T> : IUnitOfWork where T : DbContext
         _logger = logger;
     }
 
-    public async Task SaveChangesAsync(Action<IServiceProvider>? before = null, Action<IServiceProvider>? after = null,
+    public async Task SaveChangesAsync(Func<IServiceProvider, Task>? before = null,
+        Func<IServiceProvider, Task>? after = null,
         CancellationToken cancellationToken = default)
     {
-        if (before != null) _unitOfWorkOptions.BeforeSaveChanges = before;
+        if (before != null) _unitOfWorkOptions.BeforeSaveChangesAsync = before;
 
-        if (after != null) _unitOfWorkOptions.AfterSaveChanges = after;
+        if (after != null) _unitOfWorkOptions.AfterSaveChangesAsync = after;
 
-        _unitOfWorkOptions.BeforeSaveChanges?.Invoke(_serviceProvider);
+        _unitOfWorkOptions.BeforeSaveChangesAsync?.Invoke(_serviceProvider);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
 
-        _unitOfWorkOptions.AfterSaveChanges?.Invoke(_serviceProvider);
+        _unitOfWorkOptions.AfterSaveChangesAsync?.Invoke(_serviceProvider);
     }
 
 
-    public async Task CommitAsync(Action<IServiceProvider>? before = null, Action<IServiceProvider>? after = null,
+    public async Task CommitAsync(Func<IServiceProvider, Task>? before = null,
+        Func<IServiceProvider, Task>? after = null,
         CancellationToken cancellationToken = default)
     {
         if (_transaction == null) throw new ArgumentNullException(nameof(_transaction));
 
-        if (before != null) _unitOfWorkOptions.BeforeCommit = before;
+        if (before != null) _unitOfWorkOptions.BeforeCommitAsync = before;
 
-        if (after != null) _unitOfWorkOptions.AfterCommit = after;
+        if (after != null) _unitOfWorkOptions.AfterCommitAsync = after;
 
-        _unitOfWorkOptions.BeforeCommit?.Invoke(_serviceProvider);
+        _unitOfWorkOptions.BeforeCommitAsync?.Invoke(_serviceProvider);
 
         await _transaction.CommitAsync(cancellationToken);
 
-        _unitOfWorkOptions.AfterCommit?.Invoke(_serviceProvider);
+        _unitOfWorkOptions.AfterCommitAsync?.Invoke(_serviceProvider);
     }
 
     public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)

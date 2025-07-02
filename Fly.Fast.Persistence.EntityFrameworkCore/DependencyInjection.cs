@@ -12,7 +12,7 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork, UnitOfWork<T>>();
 
         var unitOfWorkOptions = new UnitOfWorkOptions();
-        if (action != null) action.Invoke(unitOfWorkOptions);
+        action?.Invoke(unitOfWorkOptions);
 
         services.AddScoped<UnitOfWorkOptions>(_ => unitOfWorkOptions);
     }
