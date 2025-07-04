@@ -27,37 +27,26 @@ public class UnitOfWork<T> : IUnitOfWork where T : DbContext
         _logger = logger;
     }
 
-    public async Task SaveChangesAsync(Func<IServiceProvider, Task>? before = null,
-        Func<IServiceProvider, Task>? after = null,
+    public async Task SaveChangesAsync(bool isExecuteBefore = true, bool isExecuteAfter = true,
         CancellationToken cancellationToken = default)
     {
-        if (before != null) _unitOfWorkOptions.BeforeSaveChangesAsync = before;
-
-        if (after != null) _unitOfWorkOptions.AfterSaveChangesAsync = after;
-
-        _unitOfWorkOptions.BeforeSaveChangesAsync?.Invoke(_serviceProvider);
+        if (isExecuteBefore) _unitOfWorkOptions.BeforeSaveChangesAsync?.Invoke(_serviceProvider);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
 
-        _unitOfWorkOptions.AfterSaveChangesAsync?.Invoke(_serviceProvider);
+        if (isExecuteAfter) _unitOfWorkOptions.AfterSaveChangesAsync?.Invoke(_serviceProvider);
     }
 
-
-    public async Task CommitAsync(Func<IServiceProvider, Task>? before = null,
-        Func<IServiceProvider, Task>? after = null,
+    public async Task CommitAsync(bool isExecuteBefore = true, bool isExecuteAfter = true,
         CancellationToken cancellationToken = default)
     {
         if (_transaction == null) throw new ArgumentNullException(nameof(_transaction));
 
-        if (before != null) _unitOfWorkOptions.BeforeCommitAsync = before;
-
-        if (after != null) _unitOfWorkOptions.AfterCommitAsync = after;
-
-        _unitOfWorkOptions.BeforeCommitAsync?.Invoke(_serviceProvider);
+        if (isExecuteBefore) _unitOfWorkOptions.BeforeCommitAsync?.Invoke(_serviceProvider);
 
         await _transaction.CommitAsync(cancellationToken);
 
-        _unitOfWorkOptions.AfterCommitAsync?.Invoke(_serviceProvider);
+        if (isExecuteAfter) _unitOfWorkOptions.AfterCommitAsync?.Invoke(_serviceProvider);
     }
 
     public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
@@ -76,8 +65,8 @@ public class UnitOfWork<T> : IUnitOfWork where T : DbContext
 
     public void Dispose()
     {
-        _logger.LogDebug("{name}: Disposing...", nameof(UnitOfWork<T>));
         _transaction?.Dispose();
         _transaction = null;
+        _logger.LogDebug("{name}: Disposed...", nameof(UnitOfWork<T>));
     }
 }

@@ -2,10 +2,10 @@ namespace Fly.Fast.Persistence.Contracts;
 
 public interface IUnitOfWork : IDisposable
 {
-    Task SaveChangesAsync(Func<IServiceProvider, Task>? before = null, Func<IServiceProvider, Task>? after = null,
+    Task SaveChangesAsync(bool isExecuteBefore = true, bool isExecuteAfter = true,
         CancellationToken cancellationToken = default);
 
-    Task CommitAsync(Func<IServiceProvider, Task>? before = null, Func<IServiceProvider, Task>? after = null,
+    Task CommitAsync(bool isExecuteBefore = true, bool isExecuteAfter = true,
         CancellationToken cancellationToken = default);
 
     Task BeginTransactionAsync(CancellationToken cancellationToken = default);
