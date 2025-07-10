@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 
-namespace Fly.Fast.Persistence.EntityFrameworkCore;
+namespace Fly.Fast.Persistence;
 
 public class UnitOfWork<T> : IUnitOfWork where T : DbContext
 {

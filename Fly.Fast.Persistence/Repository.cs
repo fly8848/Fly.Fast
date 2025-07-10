@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using Fly.Fast.Persistence.Contracts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Fly.Fast.Persistence.EntityFrameworkCore;
+namespace Fly.Fast.Persistence;
 
 public abstract class Repository<T> : IRepository<T> where T : class
 {

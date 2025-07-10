@@ -2,7 +2,7 @@ using Fly.Fast.Persistence.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Fly.Fast.Persistence.EntityFrameworkCore;
+namespace Fly.Fast.Persistence;
 
 public static class DependencyInjection
 {
