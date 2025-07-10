@@ -7,5 +7,4 @@ public interface IEntity<T> : IEntity
 
 public interface IEntity
 {
-    
 }
